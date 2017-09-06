@@ -6,7 +6,7 @@ import android.os.Bundle;
 /**
  * This Activity allows the user to check in a patient.
  *
- * Testing.
+ * Testing. 1 2 3
  */
 public class CheckInActivity extends AppCompatActivity {
 
