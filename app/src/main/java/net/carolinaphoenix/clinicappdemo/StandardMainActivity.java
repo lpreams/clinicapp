@@ -3,6 +3,9 @@ package net.carolinaphoenix.clinicappdemo;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+/**
+ * This Activity will the the main page for Standard (non-Administrator) users
+ */
 public class StandardMainActivity extends AppCompatActivity {
 
     @Override

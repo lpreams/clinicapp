@@ -3,6 +3,9 @@ package net.carolinaphoenix.clinicappdemo;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+/**
+ * This Activity allows the user to check in a patient.
+ */
 public class CheckInActivity extends AppCompatActivity {
 
     @Override
