@@ -6,6 +6,8 @@ import android.view.View;
 
 /**
  * This Activity is shown first if the app is not already signed in, and allows the user to sign in
+ *
+ * This is a test for github
  */
 public class LoginActivity extends AppCompatActivity {
 
