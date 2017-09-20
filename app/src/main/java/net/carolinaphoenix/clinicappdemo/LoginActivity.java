@@ -1,5 +1,6 @@
 package net.carolinaphoenix.clinicappdemo;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -18,6 +19,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void onLoginButton(View view) {
-        // TODO figure out how the login system works, and store a token on successful login
+        // TODO for now this just takes it to the next screen, ignoring user/pass
+        startActivity(new Intent(this, DrawerActivity.class));
     }
 }
