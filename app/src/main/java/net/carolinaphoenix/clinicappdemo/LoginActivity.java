@@ -21,5 +21,6 @@ public class LoginActivity extends AppCompatActivity {
     public void onLoginButton(View view) {
         // TODO for now this just takes it to the next screen, ignoring user/pass
         startActivity(new Intent(this, DrawerActivity.class));
+        finish();
     }
 }

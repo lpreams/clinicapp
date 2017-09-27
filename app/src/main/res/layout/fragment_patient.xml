@@ -8,45 +8,51 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:orientation="vertical">
 
-        <Space
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/my_toolbar"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1" />
+            android:layout_height="48dp"
+            android:background="@color/colorPrimary"
+            android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
 
-        <Button
-            android:id="@+id/addPatientbutton"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Add patient" />
+            android:orientation="horizontal">
+
+            <Space
+                android:layout_width="16sp"
+                android:layout_height="wrap_content" />
+
+            <EditText
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"/>
+
+            <Space
+                android:layout_width="16sp"
+                android:layout_height="wrap_content" />
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_search" />
+
+            <Space
+                android:layout_width="16sp"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
 
         <Space
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1" />
 
-        <Button
-            android:id="@+id/checkInPatientButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Check in patient" />
-
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1" />
-
-        <Button
-            android:id="@+id/searchPatientButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Search patients" />
-
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1" />
 
     </LinearLayout>
 

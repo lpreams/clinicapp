@@ -2,13 +2,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="net.carolinaphoenix.clinicappdemo.StudyFragment">
+    tools:context="net.carolinaphoenix.clinicappdemo.AdminFragment">
 
     <!-- TODO: Update blank fragment layout -->
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:textSize="30sp"
-        android:text="This is the study fragment" />
+        android:text="This is the admin fragment " />
 
 </FrameLayout>
