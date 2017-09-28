@@ -2,11 +2,13 @@ package net.carolinaphoenix.clinicappdemo;
 
 import android.app.Fragment;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -27,12 +29,9 @@ public class DrawerActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_drawer);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.my_toolbar);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar.setTitleTextColor(0xFFFFFFFF);
         setSupportActionBar(toolbar);
-
-        toolbar.setNavigationIcon(R.mipmap.ic_launcher);
-
-
 
         menuList = new ArrayList<>();
         menuList.add("Patients");
@@ -43,30 +42,71 @@ public class DrawerActivity extends AppCompatActivity {
 
         drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         listView = (ListView) findViewById(R.id.left_drawer);
-        listView.setAdapter(new ArrayAdapter<String>(this, R.layout.drawer_textview, menuList));
+        listView.setAdapter(new ArrayAdapter<>(this, R.layout.drawer_textview, menuList));
         listView.setOnItemClickListener(new ListView.OnItemClickListener(){
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 selectItem(position);
             }
         });
-        drawerToggle = new ActionBarDrawerToggle(
-                this,                  /* host Activity */
-                drawer,
-                (Toolbar) findViewById(R.id.my_toolbar),
-                R.string.drawer_open,
-                R.string.drawer_close
-        );
-
+        drawerToggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.drawer_open, R.string.drawer_close){
+            public void onDrawerClosed(View view) {
+                super.onDrawerClosed(view);
+            }
+            public void onDrawerOpened(View drawerView) {
+                super.onDrawerOpened(drawerView);
+            }
+        };
         drawer.addDrawerListener(drawerToggle);
+        //required for navigation drawer button
+        //noinspection ConstantConditions
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setHomeButtonEnabled(true);
         getFragmentManager().beginTransaction().replace(R.id.content_frame, new PatientFragment()).commit();
         setTitle(menuList.get(0));
+    }
+
+    /**
+     * required for navigation drawer button
+     * @param savedInstanceState state
+     */
+    @Override
+    protected void onPostCreate(Bundle savedInstanceState) {
+        super.onPostCreate(savedInstanceState);
+        // Sync the toggle state after onRestoreInstanceState has occurred.
+        drawerToggle.syncState();
+    }
+
+    /**
+     * Required for navigation drawer button
+     * @param newConfig new config
+     */
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        drawerToggle.onConfigurationChanged(newConfig);
+    }
+
+    /**
+     * Required for navigation drawer button
+     * @param item selected item
+     * @return true
+     */
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Pass the event to ActionBarDrawerToggle, if it returns
+        // true, then it has handled the app icon touch event
+        /*
+        if (drawerToggle.onOptionsItemSelected(item)) return true;
+        return super.onOptionsItemSelected(item);
+        */
+        return drawerToggle.onOptionsItemSelected(item) || super.onOptionsItemSelected(item);
     }
 
     private void selectItem(int position) {
         // Create a new fragment and specify the planet to show based on position
 
-        Fragment fragment = null;
+        Fragment fragment;
 
         switch (position) {
             case 0 : // patients
