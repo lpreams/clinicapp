@@ -4,7 +4,7 @@ How to get started:
 
 # tldr
 
-Configure Eclipse with Gradle and Eclipse WTP, add a Tomcat8.5 server, run the project on the server.
+*Check out project from Version Control* in Android Studio
 
 ## Full Instructions
 
